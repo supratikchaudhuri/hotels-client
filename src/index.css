@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.App {
+  position: relative;
+  min-height: 100vh;
+}
 
 .hide-scroll-bar {
   -ms-overflow-style: none;
@@ -26,4 +30,58 @@ code {
   justify-content: center;
   flex-wrap: wrap;
   margin: 0 20px 0 20px;
+}
+
+.rating span {
+  color: rgba(255, 175, 2, 0.801) !important;
+}
+.rating span:last-child {
+  color: #0274a8 !important;
+}
+
+
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;   
+}
+
+.product-page {
+  margin-top: 15px;
+}
+
+.product-page .part-2 {
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.addItem-style {
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+}
+
+.carousel-img{
+  /* min-width: 800px !important; */
+  max-width: 800px !important;
+  max-height: 800px !important;
+  width: 100% !important;
+}
+
+.number-input {
+  color: white !important;
+  max-width: 80px;
+}
+
+.success {
+  color: green !important;
+}
+.failure {
+  color: red !important;
 }

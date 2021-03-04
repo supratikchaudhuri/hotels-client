@@ -1,10 +1,12 @@
 import React from 'react';
 import { MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardFooter, MDBTooltip } from 'mdbreact';
-
+import Rating from "./Rating"
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({item}) => {
   return (
     <section style={{width: '25%', margin: '20px'}} className='text-center my-5  sm-12 md-4'>
+    <Link to={`product/${item._id}`}>
       
       <MDBRow>
         <MDBCol  className='mb-lg-12 mb-4'>
@@ -16,17 +18,17 @@ const ProductCard = ({item}) => {
               alt='sample photo'
             />
             <MDBCardBody cascade className='text-center'>
-              <a href='#!' className='text-muted'>
+              <a href='/' className='text-muted'>
                 <h5>{item.category}</h5>
               </a>
               <MDBCardTitle>
                 <strong>
-                  <a href='#!'>{item.name}</a>
+                  <a href='/'>{item.name}</a>
                 </strong>
               </MDBCardTitle>
               <MDBCardText>{item.description}</MDBCardText>
 
-              {/* Star rating here */}
+              <Rating rating={item.rating} numReviews={item.numReviews}/>
 
               <MDBCardFooter className='px-1'>
                 <span className='float-left font-weight-bold'>
@@ -48,6 +50,7 @@ const ProductCard = ({item}) => {
         </MDBCol>
         
       </MDBRow>
+    </Link>
     </section>
   );
 };

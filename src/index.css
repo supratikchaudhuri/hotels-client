@@ -79,6 +79,13 @@ code {
   max-width: 80px;
 }
 
+.loading {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 500px !important;
+}
+
 .success {
   color: green !important;
 }

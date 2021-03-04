@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route} from "react-router-dom"
 import Footer from './components/Footer.jsx';
 
-import Navbar from "./components/Navbar.js"
+import Navbar from "./components/Navbar.jsx"
 import HomeScreen from "./screens/HomeScreen"
 import ProductScreen from "./screens/ProductScreen"
 

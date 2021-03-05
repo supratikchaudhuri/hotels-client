@@ -2,29 +2,47 @@ import React from 'react'
 import AddItemCard from '../components/AddItemCard'
 import Carousel from '../components/Carousel'
 import DescriptionCard from '../components/DescriptionCard'
-import data from "../data.js";
 import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
+import { useEffect } from 'react';
+import { detailsProduct } from '../actions/productActions';
 
 function ProductScreen() {
-    const {id} = useParams();
-    const product = data.products.find((x) => x._id == id)//no strinct matching cause one is string and other is number
 
-    if(!product)
-        return (
-            <div>Product Not Found</div>
-        )
+    const dispatch = useDispatch();
+    const productDetails = useSelector((state) => state.productDetails);
+    const {loading, error, product} = productDetails;
+
+    const {id} = useParams();
+
+    useEffect(() => {
+        dispatch(detailsProduct(id));
+    }, [dispatch, id])
+
 
     return (
+
         <div className="product-page">
-            <Carousel product={product}/>
+            {loading ? (
+                <LoadingBox/>
+            ) : error ? (
+                <MessageBox>{error}</MessageBox> 
+            ) : (
+                <>
+                    <Carousel product={product}/>
 
-            <div className="part-2">
-
-                <DescriptionCard product={product}/>
-                <AddItemCard product={product}/>
-
-            </div>
+                    <div className="part-2">
+                        <DescriptionCard product={product}/>
+                        <AddItemCard product={product}/>
+                    </div>
+                </>
+            )}  
         </div>
+
+
+        
     )
 }
 

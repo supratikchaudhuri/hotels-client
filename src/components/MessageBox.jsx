@@ -3,7 +3,7 @@ import React from 'react'
 function MessageBox(props) {
     return (
         <div>
-            {props.children.message}
+            {props.children}
         </div>
     )
 }

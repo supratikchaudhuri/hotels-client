@@ -1,7 +1,32 @@
 import React from 'react';
 import {MDBBtn, MDBCard, MDBCardBody, MDBInput, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBIcon } from 'mdbreact';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-const AddItemCard = ({product}) => {
+const AddItemCard = (props) => {
+  const history = useHistory();
+  
+  console.log(props);
+  const {product} = props;
+  const [qty, setQty] = useState(1);
+
+  const changeQty = (e) => {
+    setQty(e.target.value);
+    if(qty >= product.available) {
+      alert("Required room are not available!");
+      setQty(1);
+    }
+    else if(qty <= 0) {
+      alert("Book atleast 1 room.");
+      setQty(1);
+      return;
+    }
+  }
+
+  const addToBookings = () => {
+    history.push(`/bookings/${product._id}?qty=${qty}`);
+  }
+
   return (
       <MDBCol style={{ maxWidth: "30rem"}}>
       <MDBCard>
@@ -17,9 +42,9 @@ const AddItemCard = ({product}) => {
             </MDBCardText>
             <div className="addItem-style">
 
-            <MDBInput type="number" className="number-input" placeHolder="Rooms"/>
+            <MDBInput type="number" className="number-input" placeHolder="Rooms" value={qty} onChange={changeQty}/>
 
-                <MDBBtn gradient=" purple">Book Now</MDBBtn>
+                <MDBBtn gradient=" purple" onClick={addToBookings}>ADD ROOMS</MDBBtn>
                 <a href='/' className='activator waves-effect waves-light mr-4'>
                 <MDBIcon icon='share-alt' className='white-text' />
                 </a>

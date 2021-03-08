@@ -35,7 +35,8 @@ function ProductScreen() {
 
                     <div className="part-2">
                         <DescriptionCard product={product}/>
-                        <AddItemCard product={product}/>
+
+                        {product.available > 0 && <AddItemCard product={product}/>}
                     </div>
                 </>
             )}  

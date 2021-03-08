@@ -92,3 +92,40 @@ code {
 .failure {
   color: red !important;
 }
+
+
+.small-img {
+  max-width: 5rem;
+  width: 100%;
+  margin-right: 9px;
+}
+
+.min-30 {
+  min-width: 25rem;
+}
+
+.items {
+  margin-bottom: 20px ;
+}
+
+.itemRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 70%;
+  margin: auto;
+}
+
+.itemRow .col {
+ 
+}
+
+.bookingScreen {
+  height: 100vh;
+}
+
+.CheckoutCard {
+  margin-top: 55px !important;
+  margin: auto;
+  max-width: 22rem !important;
+}

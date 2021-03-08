@@ -5,6 +5,7 @@ import Footer from './components/Footer.jsx';
 import Navbar from "./components/Navbar.jsx"
 import HomeScreen from "./screens/HomeScreen"
 import ProductScreen from "./screens/ProductScreen"
+import BookingScreen from "./screens/BookingScreen"
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 
       <Navbar/>
 
+      <Route exact path="/bookings/:id?" component={BookingScreen}/>
       <Route exact path="/" component={HomeScreen}/>
       <Route path="/product/:id" component={ProductScreen}/>
 

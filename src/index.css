@@ -129,3 +129,36 @@ code {
   margin: auto;
   max-width: 22rem !important;
 }
+
+#form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto !important;
+  height: 90vh;
+  width: 30rem !important;
+}
+
+#badge {
+  color: white;
+  background-color: red;
+  border-radius: 100%;
+  margin: 0 5px;
+  padding: 2px 8px;
+}
+
+.checkout-steps {
+  display: flex;
+}
+
+.checkout-steps > div {
+  border-top: 0.3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+.checkout-steps > div.active {
+  border-top-color: #04a82d;
+  color: #008f3b;
+}

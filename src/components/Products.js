@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import ProductCard from "./ProductCard";
-import axios from "axios";
 
 import LoadingBox from "./LoadingBox"
 import MessageBox from "./MessageBox"

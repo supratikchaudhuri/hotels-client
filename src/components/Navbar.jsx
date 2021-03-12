@@ -1,26 +1,35 @@
-import React, { Component, useEffect } from "react";
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
-MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
+import React, { useState } from 'react'
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBDropdown } from "mdbreact";
 import {Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { signout } from '../actions/userActions';
 
-class Navbar extends Component {
-  state = {
-    isOpen: false
-  };
+function Navbar(props) {
 
-  toggleCollapse = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-  }
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleCollapse = (prev) => {
+        setIsOpen(!isOpen)
+    }
 
-  
-  render() {
+    const dispatch = useDispatch()
+    const cart = useSelector((state) => state.cart);
+    const { cartItems } = cart;
+
+    const userSignin = useSelector((state) => state.userSignin);
+    const { userInfo } = userSignin;
+
+    const signoutHandler = () => {
+        dispatch(signout());
+    };
+    
+
     return (
-      <MDBNavbar color="deep-purple accent-4" dark expand="md">
+        <MDBNavbar color="deep-purple accent-4" dark expand="md">
           <MDBNavbarBrand>
             <Link to={'/'}><strong className="white-text">Navbar</strong></Link>
           </MDBNavbarBrand>
-          <MDBNavbarToggler onClick={this.toggleCollapse} />
-          <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+          <MDBNavbarToggler onClick={toggleCollapse} />
+          <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>
             <MDBNavbarNav left>
               <MDBNavItem active>
                 <MDBNavLink to="#!">Home</MDBNavLink>
@@ -28,50 +37,40 @@ class Navbar extends Component {
               <MDBNavItem>
                 <MDBNavLink to="#!">Features</MDBNavLink>
               </MDBNavItem>
-              <MDBNavItem>
-                <MDBNavLink to="#!">Pricing</MDBNavLink>
-              </MDBNavItem>
-              <MDBNavItem>
-                <MDBDropdown>
-                  <MDBDropdownToggle nav caret>
-                    <div className="d-none d-md-inline">Dropdown</div>
-                  </MDBDropdownToggle>
-                  <MDBDropdownMenu className="dropdown-default">
-                    <MDBDropdownItem href="/">Action</MDBDropdownItem>
-                    <MDBDropdownItem href="/">Another Action</MDBDropdownItem>
-                    <MDBDropdownItem href="/">Something else here</MDBDropdownItem>
-                    <MDBDropdownItem href="/">Something else here</MDBDropdownItem>
-                  </MDBDropdownMenu>
-                </MDBDropdown>
-              </MDBNavItem>
+              
             </MDBNavbarNav>
             <MDBNavbarNav right>
               <MDBNavItem>
                 <MDBNavLink to="/bookings">
                   Bookings
-                  {/* {cartItems.length > 0 &&  */}
-                  {/* <span className='badge'>{cartItems.length}</span>}  */}
+                    {cartItems.length > 0 && 
+                    <span id='badge'>{cartItems.length}</span>} 
                 </MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
+              {
+                userInfo ? (
+                <>
                 <MDBDropdown>
-                  <MDBDropdownToggle nav caret>
-                    <MDBIcon icon="user" />
-                  </MDBDropdownToggle>
-                  <MDBDropdownMenu className="dropdown-right">
-                    <MDBDropdownItem href="/">Action</MDBDropdownItem>
-                    <MDBDropdownItem href="/">Another Action</MDBDropdownItem>
-                    <MDBDropdownItem href="/">Something else here</MDBDropdownItem>
-                    <MDBDropdownItem href="/">Something else here</MDBDropdownItem>
-                  </MDBDropdownMenu>
+                <MDBDropdownToggle nav caret>
+                  <div className="d-none d-md-inline">{userInfo.name}</div>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu className="dropdown-default">
+                  <MDBDropdownItem onClick={signoutHandler} href="/">Sign out</MDBDropdownItem>
+                </MDBDropdownMenu>
                 </MDBDropdown>
+                </>
+                ) : (
+                <MDBNavLink to="/signin">
+                  Sign in
+                </MDBNavLink>
+                )
+              }
               </MDBNavItem>
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBNavbar>
-
-    );
-  }
+    )
 }
 
-export default Navbar;
+export default Navbar

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCol } from 'mdbreact';
 import { Link } from 'react-router-dom';
 
 const CheckoutCard = (props) => {
@@ -14,7 +14,7 @@ const CheckoutCard = (props) => {
             {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
           </MDBCardTitle>
 
-          <Link to={`/signin?redirect=shipping`}>
+          <Link to={`/signin?redirect=/shipping`}>
             <MDBBtn gradient=" purple" disabled={cartItems.length === 0}>Proceed To Checkout</MDBBtn>
           </Link>
 

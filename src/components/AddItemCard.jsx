@@ -1,12 +1,11 @@
 import React from 'react';
-import {MDBBtn, MDBCard, MDBCardBody, MDBInput, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBIcon } from 'mdbreact';
+import {MDBBtn, MDBCard, MDBCardBody, MDBInput, MDBCardTitle, MDBCardText, MDBCol, MDBIcon } from 'mdbreact';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const AddItemCard = (props) => {
   const history = useHistory();
   
-  console.log(props);
   const {product} = props;
   const [qty, setQty] = useState(1);
 

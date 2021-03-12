@@ -1,8 +1,7 @@
 import React from 'react';
-import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 
 const DescriptionCard = ({product}) => {
-    console.log(product);
   return (
     <MDBCol style={{ maxWidth: "30rem"}}>
       <MDBCard>

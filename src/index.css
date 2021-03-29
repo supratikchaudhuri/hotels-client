@@ -44,6 +44,7 @@ code {
   position: relative;
   bottom: 0;
   width: 100%;   
+  margin-top: 1000px;
 }
 
 .product-page {
@@ -161,4 +162,26 @@ code {
 .checkout-steps > div.active {
   border-top-color: #04a82d;
   color: #008f3b;
+}
+
+.center-div {
+  display: flex;
+  height: 70vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-items-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.whole-page > * {
+  margin-top: 20px;
+}
+
+.whole-page {
+  display: flex;
+  width: 100vw;
+  overflow-x: hidden !important;
 }

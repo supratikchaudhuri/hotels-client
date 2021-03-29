@@ -10,6 +10,7 @@ import SigninScreen from './screens/SigninScreen.jsx';
 import RegisterScreen from './screens/RegisterScreen.jsx';
 import BillingAddress from './screens/BillingAddressScreen.jsx';
 import PaymentMethodScreen from './screens/PaymentMethodScreen.jsx';
+import PlaceOrderScreen from './screens/PlaceOrderScreen.jsx';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
 
       <Route exact path="/signin" component={SigninScreen}/>
       <Route exact path="/register" component={RegisterScreen}/>
+      <Route exact path="/placeorder" component={PlaceOrderScreen}/>
       <Route exact path="/payment" component={PaymentMethodScreen}/>
       <Route exact path="/shipping" component={BillingAddress}/>
       <Route exact path="/bookings/:id?" component={BookingScreen}/>

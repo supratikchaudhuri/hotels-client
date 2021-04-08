@@ -184,4 +184,9 @@ code {
   display: flex;
   width: 100vw;
   overflow-x: hidden !important;
+  /* margin-bottom: 200px; */
+}
+
+.left-flex, .right-flex {
+  margin-bottom: 150px;
 }

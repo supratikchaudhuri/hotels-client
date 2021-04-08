@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
-// import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { createOrder } from '../actions/orderActions';

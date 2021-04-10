@@ -56,6 +56,7 @@ function Navbar(props) {
                   <div className="d-none d-md-inline">{userInfo.name}</div>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
+                  <MDBDropdownItem href="/order-history">Order History</MDBDropdownItem>
                   <MDBDropdownItem onClick={signoutHandler} href="/">Sign out</MDBDropdownItem>
                 </MDBDropdownMenu>
                 </MDBDropdown>

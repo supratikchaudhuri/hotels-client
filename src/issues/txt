@@ -1,6 +1,3 @@
 stars
 foorter if page is empty
 
-
-Order validation failed: convineincePrice: Path `convineincePrice` is required., billingDetails.address: Path `billingDetails.address` is required., billingDetails.fullName: Path `billingDetails.fullName` is required.
-//HAD TO REMOVE REQUIRED FROM THEM

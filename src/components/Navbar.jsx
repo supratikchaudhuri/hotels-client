@@ -19,12 +19,11 @@ function Navbar(props) {
     const { userInfo } = userSignin;
 
     const signoutHandler = () => {
-        dispatch(signout());
+      dispatch(signout());
     };
     
-
     return (
-        <MDBNavbar color="deep-purple accent-4" dark expand="md">
+        <MDBNavbar color="blue" dark expand="md">
           <MDBNavbarBrand>
             <Link to={'/'}><strong className="white-text">Navbar</strong></Link>
           </MDBNavbarBrand>
@@ -56,6 +55,7 @@ function Navbar(props) {
                   <div className="d-none d-md-inline">{userInfo.name}</div>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
+                  <MDBDropdownItem href="/profile">Profile</MDBDropdownItem>
                   <MDBDropdownItem href="/order-history">Order History</MDBDropdownItem>
                   <MDBDropdownItem onClick={signoutHandler} href="/">Sign out</MDBDropdownItem>
                 </MDBDropdownMenu>

@@ -41,7 +41,7 @@ code {
 
 
 .footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;   
 }
@@ -131,12 +131,15 @@ code {
 }
 
 #form {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto !important;
   height: 90vh;
   width: 30rem !important;
+  z-index: 1000 !important;
+  margin: 0 auto !important;
+  margin-bottom: 100px !important;
 }
 
 #badge {
@@ -205,4 +208,11 @@ code {
 }
 .table button {
   margin: 0 0.2rem;
+}
+
+.profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
 }

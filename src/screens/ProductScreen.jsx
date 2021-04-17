@@ -18,6 +18,8 @@ function ProductScreen() {
     const {id} = useParams();
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+        
         dispatch(detailsProduct(id));
     }, [dispatch, id])
 
@@ -28,7 +30,7 @@ function ProductScreen() {
             {loading ? (
                 <LoadingBox/>
             ) : error ? (
-                <MessageBox>{error}</MessageBox> 
+                <MessageBox variant="error">{error}</MessageBox> 
             ) : (
                 <>
                     <Carousel product={product}/>

@@ -43,7 +43,7 @@ const AddItemCard = (props) => {
 
             <MDBInput type="number" className="number-input" placeHolder="Rooms" value={qty} onChange={changeQty}/>
 
-                <MDBBtn gradient=" purple" onClick={addToBookings}>ADD ROOMS</MDBBtn>
+                <MDBBtn color="blue darken-1" onClick={addToBookings}>ADD ROOMS</MDBBtn>
                 <a href='/' className='activator waves-effect waves-light mr-4'>
                 <MDBIcon icon='share-alt' className='white-text' />
                 </a>

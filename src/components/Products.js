@@ -20,7 +20,9 @@ const Products = () => {
             {loading ? (
                 <LoadingBox/>
             ) : error ? (
-                <MessageBox>{error}</MessageBox> 
+                <MessageBox variant='error'>{error}</MessageBox> 
+            ) : products.length === 0 ? (
+                <MessageBox variant='neutral'>No cribs available at the moment. Please check later</MessageBox> 
             ) : (
                 <>
                 {products.map(item => {

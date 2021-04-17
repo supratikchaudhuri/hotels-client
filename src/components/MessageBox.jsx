@@ -1,8 +1,9 @@
 import React from 'react'
 
 function MessageBox(props) {
+
     return (
-        <div>
+        <div className={`message-box ${props.variant}-message`} >
             {props.children}
         </div>
     )

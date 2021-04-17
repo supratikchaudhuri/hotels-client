@@ -3,6 +3,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, M
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
 
 function RegisterScreen(props) {
@@ -22,20 +23,22 @@ function RegisterScreen(props) {
         if(password === confirmPassword)
             dispatch(register(name, email, password));
         else
-            alert("Password didn't match")
+            alert("Confirm Password didn't match Password")
     }
 
     useEffect(() => {
         if(userInfo) {
             props.history.push(redirect);
         }
-        if(error)
-            alert(error);
+        // if(error)
+        //     alert(error);
     }, [userInfo, redirect, error, props.history])
 
     return (
         <>
         {loading ? <LoadingBox/> :
+        <>
+        {error && <MessageBox>{error}</MessageBox>}
         <form  id="form" onSubmit={submitHandler}>
         <MDBContainer>
             <MDBRow>
@@ -105,7 +108,9 @@ function RegisterScreen(props) {
                 </MDBCol>
             </MDBRow>
         </MDBContainer>
-        </form>}
+        </form>
+        </>
+        }
         </>
     )
 }

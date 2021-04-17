@@ -15,7 +15,10 @@ const CheckoutCard = (props) => {
           </MDBCardTitle>
 
           <Link to={`/signin?redirect=/shipping`}>
-            <MDBBtn gradient=" purple" disabled={cartItems.length === 0}>Proceed To Checkout</MDBBtn>
+            <MDBBtn color="blue darken-1" disabled={cartItems.length === 0}>Proceed To Checkout</MDBBtn>
+          </Link>
+          <Link to={`/`}>
+            <MDBBtn outline color="blue darken-1">Browse more hotels</MDBBtn>
           </Link>
 
         </MDBCardBody>

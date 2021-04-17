@@ -46,6 +46,25 @@ code {
   width: 100%;   
 }
 
+.message-box {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+.neutral-message {
+  color: black;
+  background-color: rgba(128, 128, 128, 0.116);
+}
+.error-message {
+  color: red;
+  background-color: rgba(226, 61, 39, 0.199);
+}
+.success-message {
+  color: green;
+  background-color: #63e985af;
+}
+
 .product-page {
   margin-top: 15px;
 }

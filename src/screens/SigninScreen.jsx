@@ -3,6 +3,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, M
 import { useDispatch, useSelector } from 'react-redux';
 import { signin } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
 
 function SigninScreen(props) {
@@ -24,14 +25,16 @@ function SigninScreen(props) {
         if(userInfo) {
             props.history.push(redirect);
         }
-        if(error) {
-            alert(error);
-        }
+        // if(error) {
+        //     alert(error);
+        // }
     }, [userInfo, redirect, error, props.history])
 
     return (
         <>
         {loading ? <LoadingBox/> :
+        <>
+        {error && <MessageBox variant="error">{error}</MessageBox>}
         <form  id="form" onSubmit={submitHandler}>
         <MDBContainer>
             <MDBRow>
@@ -120,7 +123,9 @@ function SigninScreen(props) {
                 </MDBCol>
             </MDBRow>
         </MDBContainer>
-        </form>}
+        </form>
+        </>
+        }
         </>
     );
 }

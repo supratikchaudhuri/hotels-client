@@ -13,6 +13,8 @@ function BookingScreen(props) {
     const dispatch = useDispatch();
     
     useEffect(() => {
+        window.scrollTo(0, 0);
+
         if(productID) {
             dispatch(addToCart(productID, qty))
         }
@@ -28,12 +30,15 @@ function BookingScreen(props) {
 
     return (
         <div className="bookingScreen">
-            <h1 style={{margin: '20px', color: 'purple'}}>Bookings Page</h1>
+            {/* <h1 style={{margin: '20px', color: '#0d47a1'}}>Bookings Page</h1> */}
             {cartItems.length === 0 ? 
-            <MessageBox>Cart is empty. <Link to='/'>Browse Hotels here</Link></MessageBox> :
-            (
                 <>
-                <ul>
+                    <MessageBox variant="neutral">Cart is empty.</MessageBox> 
+                    <Link to='/'>Browse Hotels here</Link>
+                </>
+                :
+                <>
+                <ul style={{marginTop: '30px'}}>
                     {cartItems.map(item => (
                         <li key={item.product} className="items">
                             <div className="itemRow">
@@ -60,16 +65,15 @@ function BookingScreen(props) {
                                 <div className="col">${item.price}</div>
 
                                 <div className="col">
-                                    <button onClick={() => removeFromCartHandler(item.product)}><MDBIcon icon="trash-alt" style={{color: 'purple'}}/></button>
+                                    <button onClick={() => removeFromCartHandler(item.product)}><MDBIcon icon="trash-alt" style={{color: '#0d47a1'}}/></button>
                                 </div>
                             </div>
                         </li>
                     ))}
                 </ul>
-                
                 <CheckoutCard cartItems={cartItems}/>
                 </>
-            )}
+            }
         </div>
     )
 }

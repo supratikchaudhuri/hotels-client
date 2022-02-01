@@ -15,6 +15,10 @@ import OrderScreen from './screens/OrderScreen.jsx';
 import OrderHistoryScreen from './screens/OrderHistoryScreen.jsx';
 import ProfileScreen from './screens/ProfileScreen.jsx';
 import PrivateRoute from './components/PrivateRoute.js';
+// import AdminRoute from './components/AdminRoute.js';
+
+import Test from './screens/Test.jsx';
+
 
 
 function App() {
@@ -27,6 +31,7 @@ function App() {
       <Route exact path="/signin" component={SigninScreen}/>
       <Route exact path="/register" component={RegisterScreen}/>
       <PrivateRoute exact path="/profile" component={ProfileScreen}/>
+      {/* <AdminRoute exact path="/admin" component={ProfileScreen}/> */}
       <Route exact path="/order-history" component={OrderHistoryScreen}/>
       <Route exact path="/order/:id" component={OrderScreen}/>
       <Route exact path="/placeorder" component={PlaceOrderScreen}/>
@@ -36,6 +41,7 @@ function App() {
       <Route exact path="/" component={HomeScreen}/>
       <Route path="/product/:id" component={ProductScreen}/>
 
+      <Route path="/test" component={Test}/>
       <Footer/>
 
     </BrowserRouter>

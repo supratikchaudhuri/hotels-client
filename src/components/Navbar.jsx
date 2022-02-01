@@ -49,24 +49,40 @@ function Navbar(props) {
               <MDBNavItem>
               {
                 userInfo ? (
-                <>
-                <MDBDropdown>
-                <MDBDropdownToggle nav caret>
-                  <div className="d-none d-md-inline">{userInfo.name}</div>
-                </MDBDropdownToggle>
-                <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="/profile">Profile</MDBDropdownItem>
-                  <MDBDropdownItem href="/order-history">Order History</MDBDropdownItem>
-                  <MDBDropdownItem onClick={signoutHandler} href="/">Sign out</MDBDropdownItem>
-                </MDBDropdownMenu>
-                </MDBDropdown>
-                </>
+                  <>
+                  <MDBDropdown>
+                  <MDBDropdownToggle nav caret>
+                    <div className="d-none d-md-inline">{userInfo.name}</div>
+                  </MDBDropdownToggle>
+                  <MDBDropdownMenu className="dropdown-default">
+                    <MDBDropdownItem href="/profile">Profile</MDBDropdownItem>
+                    <MDBDropdownItem href="/order-history">Order History</MDBDropdownItem>
+                    <MDBDropdownItem onClick={signoutHandler} href="/">Sign out</MDBDropdownItem>
+                  </MDBDropdownMenu>
+                  </MDBDropdown>
+                  </>
                 ) : (
                 <MDBNavLink to="/signin">
                   Sign in
                 </MDBNavLink>
                 )
               }
+              </MDBNavItem>
+
+              <MDBNavItem>
+                {userInfo && userInfo.isAdmin && (
+                <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <div className="d-none d-md-inline">Admin View</div>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu className="dropdown-default">
+                  <MDBDropdownItem href="/dasboard">Dashboard</MDBDropdownItem>
+                  <MDBDropdownItem href="/product-list">Products</MDBDropdownItem>
+                  <MDBDropdownItem href="/order-list">Orders</MDBDropdownItem>
+                  <MDBDropdownItem href="/user-list">Users</MDBDropdownItem>
+                </MDBDropdownMenu>
+                </MDBDropdown>
+              )}
               </MDBNavItem>
             </MDBNavbarNav>
           </MDBCollapse>
@@ -75,3 +91,6 @@ function Navbar(props) {
 }
 
 export default Navbar
+
+
+

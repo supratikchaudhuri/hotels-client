@@ -38,7 +38,7 @@ function RegisterScreen(props) {
         <>
         {loading ? <LoadingBox/> :
         <>
-        {error && <MessageBox>{error}</MessageBox>}
+        {error && <MessageBox variant="error">{error}</MessageBox>}
         <form  id="form" onSubmit={submitHandler}>
         <MDBContainer>
             <MDBRow>
@@ -61,7 +61,7 @@ function RegisterScreen(props) {
                     />
                     <MDBInput
                         label="email"
-                        group autocomplete
+                        group autoComplete
                         type="email"
                         validate
                         error="wrong"

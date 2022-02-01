@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { saveBillingDetails } from '../actions/cartActions';
 
 function BillingAddress(props) {
+    const dispatch = useDispatch()
+
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
     const cart = useSelector((state) => state.cart);
@@ -14,11 +16,9 @@ function BillingAddress(props) {
         props.history.push('/signin');
     }
 
-    const [fullName, setFullName] = useState(billingDetails.fullName)
+    const [fullName, setFullName] = useState(billingDetails.fullName || userInfo.name)
     const [address, setAddress] = useState(billingDetails.address);
     const [requirements, setRequirements] = useState(billingDetails.requirements);
-
-    const dispatch = useDispatch()
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -36,18 +36,18 @@ function BillingAddress(props) {
                 <MDBCol md="12" style={{maxWidth: '50rem', margin: 'auto'}}>
                 <form onSubmit={submitHandler}>
                     <p className="h4 text-center mb-4">Billing Details</p>
-                    <label htmlFor="defaultFormContactSubjectEx" className="grey-text">
+                    <label htmlFor="defaultFormContactSubjectEx" className="">
                         Full Name
                     </label>
                     <input type="text" id="defaultFormContactNameEx" className="form-control" htmlFor='fullName' value={fullName} onChange={e => setFullName(e.target.value)}/>
                     <br />
-                    <label htmlFor="defaultFormContactSubjectEx" className="grey-text">
+                    <label htmlFor="defaultFormContactSubjectEx" className="">
                         Billing Address
                     </label>
                     <input type="text" id="defaultFormAddressEx" className="form-control" htmlFor='address' value={address} onChange={e => setAddress(e.target.value)}/>
                     <br />
                     
-                    <label htmlFor="defaultFormContactMessageEx" className="grey-text">
+                    <label htmlFor="defaultFormContactMessageEx" className="">
                         Special Requirements (Optional)
                     </label>
                     <textarea type="text" id="defaultFormContactMessageEx" className="form-control" htmlFor='requirements' rows="3" value={requirements} onChange={e => setRequirements(e.target.value)}/>

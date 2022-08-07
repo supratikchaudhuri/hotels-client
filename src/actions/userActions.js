@@ -1,5 +1,5 @@
 import axios from "axios";
-import { USER_SIGNIN_FAILURE, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAILURE, USER_DETAILS_REQUEST, USER_DETAILS_FAILURE, USER_DETAILS_SUCCESS, USER_UPDATE_PROFILE_REQUEST, USER_UPDATE_PROFILE_FAILURE, USER_UPDATE_PROFILE_SUCCESS } from "../constants/userConstants"
+import { USER_SIGNIN_FAILURE, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAILURE, USER_DETAILS_REQUEST, USER_DETAILS_FAILURE, USER_DETAILS_SUCCESS, USER_UPDATE_PROFILE_REQUEST, USER_UPDATE_PROFILE_FAILURE, USER_UPDATE_PROFILE_SUCCESS, USER_LIST_REQUEST, USER_LIST_SUCCESS, USER_LIST_FAILURE, USER_DELETE_REQUEST, USER_DELETE_SUCCESS, USER_DELETE_FAILURE, USER_UPDATE_PRIVILAGE_REQUEST, USER_UPDATE_PRIVILAGE_SUCCESS, USER_UPDATE_PRIVILAGE_FAILURE } from "../constants/userConstants"
 
 export const signin = (email, password) => async(dispatch) => {
     dispatch({
@@ -93,6 +93,60 @@ export const updateProfileAction = (user) => async(dispatch, getState) => {
     catch (err) {
         dispatch({
             type: USER_UPDATE_PROFILE_FAILURE,
+            payload: err.response && err.response.data.message ? err.response.data.message : err.message
+        })
+    }
+}
+
+export const listUsers = () => async(dispatch, getState) => {
+    dispatch({type: USER_LIST_REQUEST});
+    try {
+        const {userSignin: {userInfo}} = getState(); 
+        const {data} = await axios.get(`/api/users/`, {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        });
+        dispatch({type: USER_LIST_SUCCESS, payload: data})
+    } catch(err) {
+        dispatch({
+            type: USER_LIST_FAILURE,
+            payload: err.response && err.response.data.message ? err.response.data.message : err.message
+        })
+    }
+}
+
+export const deleteUser = (userId) => async(dispatch, getState) => {
+    dispatch({type: USER_DELETE_REQUEST, payload: userId});
+    try {
+        const {userSignin: {userInfo}} = getState(); 
+        const {data} = await axios.delete(`/api/users/${userId}`, {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        })
+        dispatch({type: USER_DELETE_SUCCESS, payload: data})
+    } catch(err) {
+        dispatch({
+            type: USER_DELETE_FAILURE,
+            payload: err.response && err.response.data.message ? err.response.data.message : err.message
+        })
+    }
+}
+
+export const updateUserPrivilages = (user) => async(dispatch, getState) => {
+    dispatch({type: USER_UPDATE_PRIVILAGE_REQUEST});
+    try {
+        const {userSignin: {userInfo}} = getState(); 
+        const {data} = await axios.put(`/api/users/${user._id}/edit`, {user}, {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        })
+        dispatch({type: USER_UPDATE_PRIVILAGE_SUCCESS, payload: data})
+    } catch(err) {
+        dispatch({
+            type: USER_UPDATE_PRIVILAGE_FAILURE,
             payload: err.response && err.response.data.message ? err.response.data.message : err.message
         })
     }

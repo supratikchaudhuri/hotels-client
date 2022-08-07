@@ -235,3 +235,24 @@ code {
   align-items: center;
   height: 80vh;
 }
+
+.edit-User-div {
+  display: flex;
+  /* justify-content: center;  */
+  align-items: center;
+}
+
+.edit-user-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto !important;
+}
+
+.btn-div-edit-user {
+  display: flex;
+  padding-top: 30px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}

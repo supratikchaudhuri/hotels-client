@@ -25,7 +25,7 @@ function Navbar(props) {
     return (
         <MDBNavbar color="blue" dark expand="md">
           <MDBNavbarBrand>
-            <Link to={'/'}><strong className="white-text">Navbar</strong></Link>
+            <Link to={'/'}><strong className="white-text">Innkeeper</strong></Link>
           </MDBNavbarBrand>
           <MDBNavbarToggler onClick={toggleCollapse} />
           <MDBCollapse id="navbarCollapse3" isOpen={isOpen} navbar>
@@ -68,6 +68,22 @@ function Navbar(props) {
                 )
               }
               </MDBNavItem>
+              
+              <MDBNavItem>
+                {userInfo && userInfo.isSeller && (
+                <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <div className="d-none d-md-inline">Admin View</div>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu className="dropdown-default">
+                  <MDBDropdownItem href="/dasboard">Dashboard</MDBDropdownItem>
+                  <MDBDropdownItem href="/product-list">Products</MDBDropdownItem>
+                  <MDBDropdownItem href="/order-list">Orders</MDBDropdownItem>
+                  <MDBDropdownItem href="/userlist">Users</MDBDropdownItem>
+                </MDBDropdownMenu>
+                </MDBDropdown>
+              )}
+              </MDBNavItem>
 
               <MDBNavItem>
                 {userInfo && userInfo.isAdmin && (
@@ -79,7 +95,7 @@ function Navbar(props) {
                   <MDBDropdownItem href="/dasboard">Dashboard</MDBDropdownItem>
                   <MDBDropdownItem href="/product-list">Products</MDBDropdownItem>
                   <MDBDropdownItem href="/order-list">Orders</MDBDropdownItem>
-                  <MDBDropdownItem href="/user-list">Users</MDBDropdownItem>
+                  <MDBDropdownItem href="/userlist">Users</MDBDropdownItem>
                 </MDBDropdownMenu>
                 </MDBDropdown>
               )}

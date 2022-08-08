@@ -8,16 +8,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import {listUsers, deleteUser} from '../actions/userActions'
 
 function UserListScreen() {
+    const dispatch = useDispatch();
+
     const userList = useSelector(state => state.userList);
     const {loading, error, users} = userList
 
     const userDelete = useSelector(state => state.userDelete);
     const {loading: loadingDelete, error: errorDelete, success: successDelete} = userDelete
-    const dispatch = useDispatch();
+
+    const userUpdatePrivilage = useSelector(state => state.userUpdatePrivilage);
+    const {loading: loadingPrivilage, success: successPrivilage, error: errorPrivilage} = userUpdatePrivilage
+
 
     useEffect(() => {
         dispatch(listUsers())
-    }, [dispatch, successDelete])
+    }, [dispatch, successDelete, successPrivilage])
 
     const deleteHandler = (user) => {
         if(window.confirm("Are you sure?")) {
@@ -38,6 +43,9 @@ function UserListScreen() {
         {loadingDelete && <LoadingBox></LoadingBox>}
         {errorDelete && <MessageBox variant="error">{errorDelete}</MessageBox>}
         {successDelete && <MessageBox variant="success">User Deleted Successfully</MessageBox>}
+        {loadingPrivilage && <LoadingBox></LoadingBox>}
+        {errorPrivilage && <MessageBox variant="error">{error}</MessageBox>}
+        {successPrivilage && <MessageBox variant="success">User Privilages Updated Successfully</MessageBox>}
         
         {
             loading ? (<LoadingBox></LoadingBox>) : 

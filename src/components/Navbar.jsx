@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signout } from '../actions/userActions';
 
 function Navbar(props) {
-
+    
     const [isOpen, setIsOpen] = useState(false);
     const toggleCollapse = (prev) => {
         setIsOpen(!isOpen)
@@ -17,7 +17,7 @@ function Navbar(props) {
 
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
-
+    // console.log(userInfo);
     const signoutHandler = () => {
       dispatch(signout());
     };
@@ -74,6 +74,22 @@ function Navbar(props) {
                 <MDBDropdown>
                 <MDBDropdownToggle nav caret>
                   <div className="d-none d-md-inline">Admin View</div>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu className="dropdown-default">
+                  <MDBDropdownItem href="/dasboard">Dashboard</MDBDropdownItem>
+                  <MDBDropdownItem href="/product-list">Products</MDBDropdownItem>
+                  <MDBDropdownItem href="/order-list">Orders</MDBDropdownItem>
+                  <MDBDropdownItem href="/userlist">Users</MDBDropdownItem>
+                </MDBDropdownMenu>
+                </MDBDropdown>
+              )}
+              </MDBNavItem>
+              
+              <MDBNavItem>
+                {userInfo && userInfo.isSeller && (
+                <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <div className="d-none d-md-inline">Seller View</div>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu className="dropdown-default">
                   <MDBDropdownItem href="/dasboard">Dashboard</MDBDropdownItem>

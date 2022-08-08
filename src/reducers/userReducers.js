@@ -82,7 +82,7 @@ export const userDeleteReducer = (state = {}, action) => {
     }
 }
 
-export const userUpdatePrevelageReducer = (state = {}, action) => {
+export const userUpdatePrivilageReducer = (state = {}, action) => {
     switch(action.type) {
         case USER_UPDATE_PRIVILAGE_REQUEST:
             return {loading: true};

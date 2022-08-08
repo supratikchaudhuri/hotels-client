@@ -3,29 +3,26 @@ import { MDBJumbotron, MDBContainer, MDBInput, MDBFormInline, MDBBtn } from "mdb
 import { useDispatch } from 'react-redux';
 import {updateUserPrivilages} from '../actions/userActions'
 import { useEffect } from 'react';
-import { PagesSharp } from '@material-ui/icons';
 
 function EditUser({user, style}) {
-  // console.log(user);
   const dispatch = useDispatch();
-  const userId = user._id;
   
-  const [isSeller, setIsSeller] = useState(user.isSeller === true ? true: false);
-  const [isAdmin, setIsAdmin] = useState(user.isAdmin === true ? true: false);
-  
+  const [isSeller, setIsSeller] = useState(user.isSeller);
+  const [isAdmin, setIsAdmin] = useState(user.isAdmin);
+
   const handleEdit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     dispatch(updateUserPrivilages({_id: user._id, isSeller, isAdmin}))
-    const {loading, error, success} = updateUserPrivilages
   }
 
-  // useEffect(() => {
-  //   const user = useSelector(state => state.userList);
-  //   const {loading, error, users} = userList
-  // }, [])
+  useEffect(() => {
+    setIsSeller(user.isSeller)
+    setIsAdmin(user.isAdmin)
+  }, [user])
 
   return (
     <div className='edit-user-card' style={style}>
+
     <MDBJumbotron fluid>
     <MDBContainer>
         <h2 className="lead"><b>Name: </b>{user.name}</h2>

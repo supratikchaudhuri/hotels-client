@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route} from "react-router-dom"
-import Footer from './components/Footer.jsx';
+// import Footer from './components/Footer.jsx';
 
 import Navbar from "./components/Navbar.jsx"
 import HomeScreen from "./screens/HomeScreen"
@@ -16,7 +16,10 @@ import OrderHistoryScreen from './screens/OrderHistoryScreen.jsx';
 import ProfileScreen from './screens/ProfileScreen.jsx';
 import PrivateRoute from './components/PrivateRoute.js';
 import AdminRoute from './components/AdminRoute.js';
+import SellerRoute from './components/SellerRoute.js';
 import UserListScreen from './screens/UserListScreen.jsx';
+import SellerOrderesScreen from './screens/SellerOrderesScreen.jsx';
+import SellerProductsScreen from './screens/SellerProductsScreen.jsx';
 
 import Test from './screens/Test.jsx';
 
@@ -32,8 +35,9 @@ function App() {
       <Route exact path="/signin" component={SigninScreen}/>
       <Route exact path="/register" component={RegisterScreen}/>
       <PrivateRoute exact path="/profile" component={ProfileScreen}/>
-      {/* <AdminRoute exact path="/admin" component={ProfileScreen}/> */}
       <AdminRoute exact path="/userlist" component={UserListScreen}/>
+      <SellerRoute exact path="/products/seller" component={SellerProductsScreen}/>
+      <SellerRoute exact path="/orderes/seller" component={SellerOrderesScreen}/>
       <Route exact path="/order-history" component={OrderHistoryScreen}/>
       <Route exact path="/order/:id" component={OrderScreen}/>
       <Route exact path="/placeorder" component={PlaceOrderScreen}/>

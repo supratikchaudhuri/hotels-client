@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ReactCardFlip from 'react-card-flip';
 
-import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol, MDBInput, MDBBtn, MDBBadge } from 'mdbreact';
 import EditIcon from '@material-ui/icons/Edit';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { getUserDetails, updateProfileAction } from '../actions/userActions';
@@ -16,6 +16,8 @@ const ProfileScreen = () => {
     const {userInfo} = userSignin;
     const userDetails =  useSelector(state => state.userDetails);
     const {user, loading, error} = userDetails;
+    console.log(userInfo);
+    console.log(user);
 
     const updateProfile = useSelector(state => state.updateProfile);
     const {
@@ -40,6 +42,7 @@ const ProfileScreen = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [name, setName] = useState("");
+    // const [seller, setName] = useState("");
       
     const flip = () => {
         setIsFlipped(!isFlipped);
@@ -78,9 +81,11 @@ const ProfileScreen = () => {
                 <MDBCardText>{ user.name }</MDBCardText>
                 <MDBCardTitle>Email: </MDBCardTitle>
                 <MDBCardText>{ user.email }</MDBCardText>
+                
+                {user.isSeller && <MDBBadge color='success'>Seller</MDBBadge>}
 
-                <button onClick={flip}><EditIcon/></button>
                 </MDBCardBody>
+                <button onClick={flip}><EditIcon/></button>
             </MDBCard>
             </MDBCol>
         </div>
@@ -115,6 +120,15 @@ const ProfileScreen = () => {
                         containerClass="mb-0"
                         onChange={e => setConfirmPassword(e.target.value)}
                 />
+
+                {/* {user.isSeller &&
+                    <MDBInput
+                        label="Seller Name"
+                        group 
+                        validate
+                        containerClass="mb-0"
+                        onChange={e => setConfirmPassword(e.target.value)}
+                />} */}
                 <div>
                     <MDBBtn onClick={submitHandler}>Submit</MDBBtn>
                 </div>

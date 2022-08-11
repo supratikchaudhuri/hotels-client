@@ -7,4 +7,4 @@ make product div responsive
 billing details - how is it working ? (going to /payments without requirements)
 
 
-errors in edit user privilages
+after changing user privilages, navbar doesnt change ... until you sign out,,,,,, thats cuz store.userSignIn and store.userDetails values are not updated

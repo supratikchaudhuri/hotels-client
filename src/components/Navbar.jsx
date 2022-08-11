@@ -17,7 +17,7 @@ function Navbar(props) {
 
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
-    // console.log(userInfo);
+
     const signoutHandler = () => {
       dispatch(signout());
     };
@@ -46,6 +46,38 @@ function Navbar(props) {
                     <span id='badge'>{cartItems.length}</span>} 
                 </MDBNavLink>
               </MDBNavItem>
+              
+              <MDBNavItem>
+                {userInfo && userInfo.isAdmin && (
+                <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <div className="d-none d-md-inline">Admin View</div>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu className="dropdown-default">
+                  <MDBDropdownItem href="/dasboard">Dashboard</MDBDropdownItem>
+                  <MDBDropdownItem href="/product-list">Products</MDBDropdownItem>
+                  <MDBDropdownItem href="/order-list">Orders</MDBDropdownItem>
+                  <MDBDropdownItem href="/userlist">Users</MDBDropdownItem>
+                </MDBDropdownMenu>
+                </MDBDropdown>
+              )}
+              </MDBNavItem>
+              
+              <MDBNavItem>
+                {userInfo && userInfo.isSeller && (
+                <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <div className="d-none d-md-inline">Seller View</div>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu className="dropdown-default">
+                  <MDBDropdownItem href="/products/seller">Products</MDBDropdownItem>
+                  <MDBDropdownItem href="/orderes/seller">Orders</MDBDropdownItem>
+                </MDBDropdownMenu>
+                </MDBDropdown>
+              )}
+              </MDBNavItem>
+
+
               <MDBNavItem>
               {
                 userInfo ? (
@@ -68,54 +100,7 @@ function Navbar(props) {
                 )
               }
               </MDBNavItem>
-              
-              <MDBNavItem>
-                {userInfo && userInfo.isSeller && (
-                <MDBDropdown>
-                <MDBDropdownToggle nav caret>
-                  <div className="d-none d-md-inline">Admin View</div>
-                </MDBDropdownToggle>
-                <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="/dasboard">Dashboard</MDBDropdownItem>
-                  <MDBDropdownItem href="/product-list">Products</MDBDropdownItem>
-                  <MDBDropdownItem href="/order-list">Orders</MDBDropdownItem>
-                  <MDBDropdownItem href="/userlist">Users</MDBDropdownItem>
-                </MDBDropdownMenu>
-                </MDBDropdown>
-              )}
-              </MDBNavItem>
-              
-              <MDBNavItem>
-                {userInfo && userInfo.isSeller && (
-                <MDBDropdown>
-                <MDBDropdownToggle nav caret>
-                  <div className="d-none d-md-inline">Seller View</div>
-                </MDBDropdownToggle>
-                <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="/dasboard">Dashboard</MDBDropdownItem>
-                  <MDBDropdownItem href="/product-list">Products</MDBDropdownItem>
-                  <MDBDropdownItem href="/order-list">Orders</MDBDropdownItem>
-                  <MDBDropdownItem href="/userlist">Users</MDBDropdownItem>
-                </MDBDropdownMenu>
-                </MDBDropdown>
-              )}
-              </MDBNavItem>
 
-              <MDBNavItem>
-                {userInfo && userInfo.isAdmin && (
-                <MDBDropdown>
-                <MDBDropdownToggle nav caret>
-                  <div className="d-none d-md-inline">Admin View</div>
-                </MDBDropdownToggle>
-                <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="/dasboard">Dashboard</MDBDropdownItem>
-                  <MDBDropdownItem href="/product-list">Products</MDBDropdownItem>
-                  <MDBDropdownItem href="/order-list">Orders</MDBDropdownItem>
-                  <MDBDropdownItem href="/userlist">Users</MDBDropdownItem>
-                </MDBDropdownMenu>
-                </MDBDropdown>
-              )}
-              </MDBNavItem>
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBNavbar>

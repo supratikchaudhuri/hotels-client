@@ -10,14 +10,13 @@ function SellerProductsScreen() {
 
   const userSignin = useSelector((state) => state.userSignin);
   const {userInfo} = userSignin;
-  // console.log(userInfo._id);
 
   const products_by_seller_list = useSelector(state => state.productsBySellerDetails);
   const {loading, error, products_by_seller} = products_by_seller_list;
 
   useEffect(() => {
     dispatch(fetch_product_by_seller_list(userInfo._id));
-  }, [dispatch]);
+  }, []);
 
 
   return (

@@ -32,7 +32,6 @@ export const fetch_product_by_seller_list = (userId) => async(dispatch) => {
 
     try{
         const {data} = await axios.get(`/api/products/seller-listings/${userId}`)
-        console.log(data);
         dispatch({type: PRODUCTS_BY_SELLER_DETAILS_SUCCESS, payload: data});
     } catch(err) {
         dispatch({type: PRODUCTS_BY_SELLER_DETAILS_FAIL, payload: err.response && err.response.data.message ? err.response.data.message : err.message})

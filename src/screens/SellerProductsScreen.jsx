@@ -16,7 +16,7 @@ function SellerProductsScreen() {
 
   useEffect(() => {
     dispatch(fetch_product_by_seller_list(userInfo._id));
-  }, []);
+  }, [dispatch, userInfo._id]);
 
 
   return (

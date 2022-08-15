@@ -17,7 +17,7 @@ function SellerOrderesScreen() {
 
   useEffect(() => {
     dispatch(fetch_product_by_seller_list(userInfo._id));
-  }, [dispatch]);
+  }, [dispatch, userInfo._id]);
 
   const getOderDetails = (product, customer) => {
     console.log(customer, product);
